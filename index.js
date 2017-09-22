@@ -2,6 +2,7 @@ const Hapi = require('hapi');
 const Good = require('good');
 const articlesDb = require('./db/articlesDb');
 const blogController = require('./controllers/blog').register;
+const corsHeaders = require('hapi-cors-headers')
 
 const server = new Hapi.Server();
 
@@ -11,17 +12,12 @@ function loadDatabases(server) {
 
 server.connection({
     host: 'localhost',
-    port: 8000,
-    routes: {
-        cors: true
-    }
+    port: 8000
 });
 
 const blogControllerPlugin = {
     register: blogController,
-    options: {
-
-    },
+    options: {},
     routes: {
         prefix: '/blog'
     }
@@ -44,6 +40,8 @@ const loggerPlugin = {
         }
     }
 };
+
+server.ext('onPreResponse', corsHeaders);
 
 server.register(
     [blogControllerPlugin, loggerPlugin], (err) => {

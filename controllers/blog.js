@@ -49,10 +49,6 @@ exports.register = (plugin, options, next) => {
                 payload: {parse: true, output: 'data'},
                 validate: {
                     payload: articleSchema
-                },
-                cors: {
-                    origin: ['*'],
-                    credentials: true
                 }
             }
         }
