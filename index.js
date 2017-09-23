@@ -1,13 +1,16 @@
 const Hapi = require('hapi');
 const Good = require('good');
 const articlesDb = require('./db/articlesDb');
+const customCollectionsDb = require('./db/customCollections');
 const blogController = require('./controllers/blog').register;
-const corsHeaders = require('hapi-cors-headers')
+const customCollectionsController = require('./controllers/customCollection').register;
+const corsHeaders = require('hapi-cors-headers');
 
 const server = new Hapi.Server();
 
 function loadDatabases(server) {
     articlesDb.loadDatabase().then(status => server.log('DB Loaded', status)).catch(err => server.log('error loading db', err));
+    customCollectionsDb.loadDatabase().then(status => server.log('DB Loaded', status)).catch(err => server.log('error loading db', err));
 }
 
 server.connection({
@@ -21,6 +24,11 @@ const blogControllerPlugin = {
     routes: {
         prefix: '/blog'
     }
+};
+const customCollectionPlugin = {
+    register: customCollectionsController,
+    options: {},
+    routes: {}
 };
 
 const loggerPlugin = {
@@ -44,7 +52,7 @@ const loggerPlugin = {
 server.ext('onPreResponse', corsHeaders);
 
 server.register(
-    [blogControllerPlugin, loggerPlugin], (err) => {
+    [blogControllerPlugin, customCollectionPlugin, loggerPlugin], (err) => {
 
         if (err) {
             throw err; // something bad happened loading the plugin
