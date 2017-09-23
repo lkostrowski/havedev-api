@@ -14,7 +14,6 @@ function getArticlesHandler(request, reply) {
 
 function addCollectionHandler(request, reply) {
     collectionsModel.addCustomCollection(request.payload).then(doc => {
-        console.log(doc)
         return reply('ok').status(200); //return it?
     }).catch(err => {
         reply(403);

@@ -2,8 +2,9 @@ const articlesModel = require('../db/articlesDb');
 const articleSchema = require('../schemas/article');
 
 function getArticlesHandler(request, reply) {
+    const published = request.query.published;
     async function getArticles() {
-        return await articlesModel.getArticles();
+        return await articlesModel.getArticles({published});
     }
 
     const articles = getArticles();
@@ -23,9 +24,7 @@ function addArticleHandler(request, reply) {
 }
 
 function getArticle(request, reply) {
-    const slug = request.params.slug;
-
-    console.log(request.param)
+    const slug = request.params.hash;
 
     articlesModel.getArticle(slug)
         .then(doc => {
@@ -40,7 +39,7 @@ function getArticle(request, reply) {
 exports.register = (plugin, options, next) => {
     plugin.route([
         {method: 'GET', path: '/articles', config: {handler: getArticlesHandler}},
-        {method: 'GET', path: '/article/{slug}', config: {handler: getArticle}},
+        {method: 'GET', path: '/article/{hash}', config: {handler: getArticle}},
         {
             method: 'POST',
             path: '/article',

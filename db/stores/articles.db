@@ -1,2 +1,7 @@
-{"title":"Moj artykul","excerpt":"Opis artykulu, skrot tekstu, zajawka","content":"# Headline\n\nMoj artykul \nlorem ipsum \n\n- dupa\n- dupa 2\n\n_asdasd_\n\n## headline 2 \n\n``` \nCode sample\n```\n\n> cytat","slug":"moj-artykul","published":{"$$date":1506116310767},"_id":"PIUZTMpR2KXq3nSp"}
-{"title":"kjashdjkasdhjk","excerpt":"asjkdhajksd jkas jkahsd jkahs jkah jkash jkahs as","content":"asdkjsafa df\nasdfa\nsdf\nasdf\nasd\nfasd","slug":"asd-asd","published":{"$$date":1506116379895},"_id":"mTmc0ZplXkL3Y8pL"}
+{"title":"new art","excerpt":"asda","content":"adasdas","slug":"asdasdad","published":{"$$date":1506169984048},"hash":"pp4w","status":"draft","_id":"BQ7NnlMifJSn5Uqn"}
+{"title":"Vue cart examples","excerpt":"How to implement example cart/basket in eccomerce with vue","content":"# dupa\n\n## example","slug":"vue-cart-example","published":{"$$date":1506168509624},"hash":"1g95","_id":"GLqOYdmGkhOfDCpk"}
+{"title":"dupa","excerpt":"asd","content":"asdasdas","slug":"dasdas","published":{"$$date":1506167508494},"hash":"69j5","_id":"KngFCUvKxjBH1rmc"}
+{"$$indexCreated":{"fieldName":"hash","unique":true,"sparse":false}}
+{"title":"art","excerpt":"asdasd","content":"asdasd","slug":"asda","published":{"$$date":1506170644481},"hash":"caya","status":"published","_id":"8DUzRuJp1MjfpRVk"}
+{"title":"asdasdasd asdas","excerpt":"asd asd a","content":"# dupa","slug":"asd-dwa","published":{"$$date":1506173175420},"hash":"pir7","status":"draft","_id":"RQKWye3pA3iodgJF"}
+{"title":"sadfasdfasdf","excerpt":"asdfa ","content":"sdfa ","slug":"asdfasd ","published":{"$$date":1506173186703},"hash":"s1lv","status":"published","_id":"f0MEnH2wkETNMtry"}

@@ -7,5 +7,7 @@ module.exports = {
     excerpt: Joi.string(),
     tags: Joi.array().items(Joi.object().keys({id: Joi.string(), name: Joi.string()})),
     categories: Joi.array().items(Joi.object().keys({id: Joi.string(), name: Joi.string()})),
-    slug: Joi.string().required()
+    slug: Joi.string().required(),
+    hash: Joi.string().length(4).required(),
+    status: Joi.string().valid('draft', 'published').required()
 };

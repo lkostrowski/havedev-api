@@ -2,6 +2,11 @@ const Datastore = require('nedb');
 
 const DB = new Datastore({filename: process.cwd() + '/db/stores/articles.db'});
 
+DB.ensureIndex({
+    fieldName: 'hash',
+    unique: true
+});
+
 function loadDatabase() {
     return new Promise((res, rej) => {
         DB.loadDatabase(err => {
@@ -28,9 +33,11 @@ function insertArticle(doc) {
     })
 }
 
-function getArticles() {
+function getArticles({published = false}) {
+    const filter = published ? {status: 'published'} : {};
+
     return new Promise((res, rej) => {
-        DB.find({}, (err, docs) => {
+        DB.find(filter, (err, docs) => {
             if (err) {
                 rej(err);
             } else {
@@ -40,9 +47,9 @@ function getArticles() {
     })
 }
 
-function getArticle(slug) {
+function getArticle(hash) {
     return new Promise((res, rej) => {
-        DB.findOne({slug}, (err, docs) => {
+        DB.findOne({hash}, (err, docs) => {
             if (err) {
                 rej(err);
             } else {
