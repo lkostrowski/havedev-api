@@ -4,6 +4,7 @@ const articlesDb = require('./model/articlesDb');
 const customCollectionsDb = require('./model/customCollections');
 const blogController = require('./controllers/blog').register;
 const customCollectionsController = require('./controllers/customCollection').register;
+const mediaController = require('./controllers/media').register;
 const corsHeaders = require('hapi-cors-headers');
 
 const server = new Hapi.Server();
@@ -30,6 +31,11 @@ const customCollectionPlugin = {
     options: {},
     routes: {}
 };
+const mediaControllerPlugin = {
+    register: mediaController,
+    options: {},
+    routes: {}
+};
 
 const loggerPlugin = {
     register: Good,
@@ -52,7 +58,7 @@ const loggerPlugin = {
 server.ext('onPreResponse', corsHeaders);
 
 server.register(
-    [blogControllerPlugin, customCollectionPlugin, loggerPlugin], (err) => {
+    [blogControllerPlugin, customCollectionPlugin, mediaControllerPlugin, loggerPlugin], (err) => {
 
         if (err) {
             throw err; // something bad happened loading the plugin
