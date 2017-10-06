@@ -1,4 +1,4 @@
-const articlesModel = require('../db/articlesDb');
+const articlesModel = require('../model/articlesDb');
 const articleSchema = require('../schemas/article');
 
 function getArticlesHandler(request, reply) {

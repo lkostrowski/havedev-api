@@ -1,0 +1,3 @@
+{"title":"asdads","excerpt":"as","content":"asd","slug":"a","hash":"e8hv","status":"published","lifecycle":{"created":{"$$date":1506456621251},"published":{"$$date":1506456621251}},"_id":"EJW3sB3tFqXPlfe6"}
+{"title":"draft","excerpt":"asdasd","content":"asdsa","slug":"asd","hash":"iwj3","status":"draft","lifecycle":{"created":{"$$date":1506456685889}},"_id":"eqh5fa84kprSDBxC"}
+{"$$indexCreated":{"fieldName":"hash","unique":true,"sparse":false}}

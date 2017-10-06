@@ -1,9 +1,12 @@
 const Datastore = require('nedb');
+const config = require('config');
+const path = require('path');
 
-const DB = new Datastore({filename: process.cwd() + '/db/stores/articles.db'});
+const dbPath = path.join(config.get('dbPath'), 'customCollections.db');
+const DB = new Datastore({filename: dbPath});
 
 DB.ensureIndex({
-    fieldName: 'hash',
+    fieldName: 'name',
     unique: true
 });
 
@@ -13,7 +16,7 @@ function loadDatabase() {
             if (err) {
                 rej(err);
             } else {
-                res('Articles DB loaded');
+                res('Custom collections DB loaded');
             }
         });
 
@@ -21,7 +24,7 @@ function loadDatabase() {
 
 }
 
-function insertArticle(doc) {
+function addCustomCollection(doc) {
     return new Promise((res, rej) => {
         DB.insert(doc, (err, doc) => {
             if (err) {
@@ -33,11 +36,9 @@ function insertArticle(doc) {
     })
 }
 
-function getArticles({published = false}) {
-    const filter = published ? {status: 'published'} : {};
-
+function getCustomCollections() {
     return new Promise((res, rej) => {
-        DB.find(filter, (err, docs) => {
+        DB.find({}, (err, docs) => {
             if (err) {
                 rej(err);
             } else {
@@ -47,9 +48,9 @@ function getArticles({published = false}) {
     })
 }
 
-function getArticle(hash) {
+function getCollection(name) {
     return new Promise((res, rej) => {
-        DB.findOne({hash}, (err, docs) => {
+        DB.findOne({name}, (err, docs) => {
             if (err) {
                 rej(err);
             } else {
@@ -61,7 +62,7 @@ function getArticle(hash) {
 
 module.exports = {
     loadDatabase,
-    insertArticle,
-    getArticles,
-    getArticle
+    getCollection,
+    getCustomCollections,
+    addCustomCollection
 };

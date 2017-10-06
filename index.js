@@ -1,7 +1,7 @@
 const Hapi = require('hapi');
 const Good = require('good');
-const articlesDb = require('./db/articlesDb');
-const customCollectionsDb = require('./db/customCollections');
+const articlesDb = require('./model/articlesDb');
+const customCollectionsDb = require('./model/customCollections');
 const blogController = require('./controllers/blog').register;
 const customCollectionsController = require('./controllers/customCollection').register;
 const corsHeaders = require('hapi-cors-headers');
@@ -9,8 +9,8 @@ const corsHeaders = require('hapi-cors-headers');
 const server = new Hapi.Server();
 
 function loadDatabases(server) {
-    articlesDb.loadDatabase().then(status => server.log('DB Loaded', status)).catch(err => server.log('error loading db', err));
-    customCollectionsDb.loadDatabase().then(status => server.log('DB Loaded', status)).catch(err => server.log('error loading db', err));
+    articlesDb.loadDatabase().then(status => server.log('DB Loaded', status)).catch(err => server.log('error loading model', err));
+    customCollectionsDb.loadDatabase().then(status => server.log('DB Loaded', status)).catch(err => server.log('error loading model', err));
 }
 
 server.connection({

@@ -1,4 +1,4 @@
-const collectionsModel = require('../db/customCollections');
+const collectionsModel = require('../model/customCollections');
 const collectionSchema = require('../schemas/customCollection');
 
 function getArticlesHandler(request, reply) {

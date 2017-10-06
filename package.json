@@ -4,14 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "test": "NODE_ENV=test nodemon index.js",
+    "start": "NODE_ENV=production nodemon index.js",
+    "dev": "NODE_ENV=development nodemon index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@types/joi": "^10.4.3",
     "@types/node": "^8.0.28",
+    "config": "^1.26.2",
     "good": "^7.3.0",
     "good-console": "^6.4.0",
     "good-squeeze": "^5.0.2",
